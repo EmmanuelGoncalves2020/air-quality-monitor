@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --un-blue: #009edb;
@@ -17,6 +18,18 @@
             --success-green: #28a745;
             --warning-yellow: #ffc107;
             --danger-red: #dc3545;
+            --bg-primary: #f5f7fa;
+            --bg-secondary: #ffffff;
+            --text-primary: #4a4a4a;
+            --text-secondary: #6c757d;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --un-gray: #3a3a3a;
         }
 
         * {
@@ -27,9 +40,10 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100% );
+            background: linear-gradient(135deg, var(--bg-primary ) 0%, #c3cfe2 100%);
             min-height: 100vh;
-            color: var(--un-dark-gray);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
         }
 
         .header {
@@ -37,6 +51,7 @@
             color: white;
             padding: 2rem 0;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         .header h1 {
@@ -84,7 +99,7 @@
             border-radius: 16px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--bg-secondary);
             margin-bottom: 2rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -108,9 +123,10 @@
             text-align: center;
             padding: 2rem;
             border-radius: 16px;
-            background: white;
+            background: var(--bg-secondary);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .metric-card:hover {
@@ -132,15 +148,26 @@
         }
 
         .metric-label {
-            color: var(--un-dark-gray);
+            color: var(--text-secondary);
             font-weight: 500;
             text-transform: uppercase;
             font-size: 0.85rem;
             letter-spacing: 1px;
         }
 
+        .trend-indicator {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .trend-up { color: var(--danger-red); }
+        .trend-down { color: var(--success-green); }
+        .trend-stable { color: var(--text-secondary); }
+
         .table-container {
-            background: white;
+            background: var(--bg-secondary);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -148,6 +175,7 @@
 
         .table {
             margin-bottom: 0;
+            color: var(--text-primary);
         }
 
         .table thead th {
@@ -180,22 +208,12 @@
             letter-spacing: 0.5px;
         }
 
-        .status-good {
-            background: rgba(40, 167, 69, 0.1);
-            color: var(--success-green);
-            border: 2px solid rgba(40, 167, 69, 0.2);
-        }
-
-        .status-moderate {
-            background: rgba(255, 193, 7, 0.1);
-            color: #e6a800;
-            border: 2px solid rgba(255, 193, 7, 0.2);
-        }
-
-        .status-unhealthy {
-            background: rgba(220, 53, 69, 0.1);
-            color: var(--danger-red);
-            border: 2px solid rgba(220, 53, 69, 0.2);
+        .aqi-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: white;
         }
 
         .alert-item {
@@ -226,7 +244,7 @@
 
         .alert-details {
             font-size: 0.9rem;
-            color: var(--un-dark-gray);
+            color: var(--text-secondary);
         }
 
         .loading-spinner {
@@ -287,6 +305,248 @@
             font-weight: 500;
         }
 
+        /* Filtros e análise */
+        .filter-section {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .form-select, .form-control, .btn {
+            border-radius: 25px;
+            border: 2px solid rgba(0, 158, 219, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .form-select:focus, .form-control:focus {
+            border-color: var(--un-blue);
+            box-shadow: 0 0 0 0.2rem rgba(0, 158, 219, 0.25);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--un-blue) 0%, var(--un-light-blue) 100%);
+            border: none;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 158, 219, 0.3);
+        }
+
+        .city-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .city-stat-card {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .city-stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .city-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--un-dark-blue);
+            margin-bottom: 1rem;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Controles flutuantes */
+        .floating-controls {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .floating-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--un-blue);
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .floating-btn.download {
+            background: var(--warning-yellow);
+            color: #333;
+        }
+
+        .floating-btn.theme {
+            background: var(--un-dark-blue);
+        }
+
+        .floating-btn.compact {
+            background: var(--success-green);
+        }
+
+        /* Notificações */
+        .notification {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: var(--success-green);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.error {
+            background: var(--danger-red);
+        }
+
+        .notification.warning {
+            background: var(--warning-yellow);
+            color: #333;
+        }
+
+        /* Favoritos */
+        .favorite-btn {
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .favorite-btn.active {
+            color: var(--warning-yellow);
+        }
+
+        .favorite-btn:hover {
+            color: var(--warning-yellow);
+        }
+
+        /* Ranking */
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .ranking-item:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .ranking-position {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--un-blue);
+            margin-right: 1rem;
+            min-width: 40px;
+        }
+
+        .ranking-city {
+            flex-grow: 1;
+            font-weight: 600;
+        }
+
+        .ranking-value {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Metas ambientais */
+        .goal-progress {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
+        .goal-progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .goal-achieved { background: var(--success-green); }
+        .goal-in-progress { background: var(--warning-yellow); }
+        .goal-critical { background: var(--danger-red); }
+
+        /* Modo compacto */
+        .compact-mode .metric-card {
+            padding: 1rem;
+        }
+
+        .compact-mode .metric-value {
+            font-size: 1.5rem;
+        }
+
+        .compact-mode .metric-icon {
+            font-size: 2rem;
+        }
+
+        .compact-mode .card {
+            margin-bottom: 1rem;
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2rem;
@@ -299,10 +559,29 @@
             .metric-value {
                 font-size: 1.5rem;
             }
+
+            .filter-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-controls > * {
+                width: 100%;
+            }
+
+            .floating-controls {
+                bottom: 1rem;
+                right: 1rem;
+            }
         }
     </style>
 </head>
-<body>
+<body data-theme="light">
+    <!-- Notificação -->
+    <div id="notification" class="notification">
+        <span id="notification-text"></span>
+    </div>
+
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -332,6 +611,9 @@
             <div class="row mb-4">
                 <div class="col-md-3 mb-3">
                     <div class="metric-card">
+                        <div class="trend-indicator" id="stations-trend">
+                            <i class="fas fa-minus trend-stable"></i>
+                        </div>
                         <div class="metric-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
@@ -341,6 +623,9 @@
                 </div>
                 <div class="col-md-3 mb-3">
                     <div class="metric-card">
+                        <div class="trend-indicator" id="readings-trend">
+                            <i class="fas fa-arrow-up trend-up"></i>
+                        </div>
                         <div class="metric-icon">
                             <i class="fas fa-chart-line"></i>
                         </div>
@@ -350,6 +635,9 @@
                 </div>
                 <div class="col-md-3 mb-3">
                     <div class="metric-card">
+                        <div class="trend-indicator" id="alerts-trend">
+                            <i class="fas fa-arrow-down trend-down"></i>
+                        </div>
                         <div class="metric-icon">
                             <i class="fas fa-exclamation-triangle"></i>
                         </div>
@@ -359,11 +647,58 @@
                 </div>
                 <div class="col-md-3 mb-3">
                     <div class="metric-card">
+                        <div class="trend-indicator" id="quality-trend">
+                            <i class="fas fa-arrow-down trend-down"></i>
+                        </div>
                         <div class="metric-icon">
                             <i class="fas fa-leaf"></i>
                         </div>
                         <div class="metric-value" id="air-quality-index">Bom</div>
                         <div class="metric-label">Índice Geral</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ranking e Metas -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-trophy me-2"></i>Ranking de Cidades
+                        </div>
+                        <div class="card-body">
+                            <h6 class="text-success mb-3"><i class="fas fa-smile me-2"></i>Melhor Qualidade do Ar</h6>
+                            <div id="best-cities">
+                                <div class="text-center py-3">
+                                    <div class="loading-spinner me-2"></div>
+                                    Carregando ranking...
+                                </div>
+                            </div>
+                            
+                            <h6 class="text-danger mb-3 mt-4"><i class="fas fa-frown me-2"></i>Necessita Atenção</h6>
+                            <div id="worst-cities">
+                                <div class="text-center py-3">
+                                    <div class="loading-spinner me-2"></div>
+                                    Carregando ranking...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-bullseye me-2"></i>Metas Ambientais (OMS)
+                        </div>
+                        <div class="card-body">
+                            <div id="environmental-goals">
+                                <div class="text-center py-3">
+                                    <div class="loading-spinner me-2"></div>
+                                    Carregando metas...
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -374,22 +709,25 @@
                     <div class="card">
                         <div class="card-header">
                             <i class="fas fa-table me-2"></i>Dados de Qualidade do Ar por Estação
+                            <span id="filter-indicator" class="badge bg-light text-dark ms-2" style="display: none;"></span>
                         </div>
                         <div class="card-body p-0">
                             <div class="table-container">
                                 <table class="table">
                                     <thead>
                                         <tr>
+                                            <th><i class="fas fa-star me-1"></i></th>
                                             <th><i class="fas fa-map-pin me-1"></i>Estação</th>
-                                            <th><i class="fas fa-smog me-1"></i>PM2.5 (μg/m³)</th>
-                                            <th><i class="fas fa-cloud me-1"></i>CO2 (ppm)</th>
-                                            <th><i class="fas fa-wind me-1"></i>O3 (μg/m³)</th>
-                                            <th><i class="fas fa-heartbeat me-1"></i>Status</th>
+                                            <th><i class="fas fa-smog me-1"></i>PM2.5</th>
+                                            <th><i class="fas fa-cloud me-1"></i>CO2</th>
+                                            <th><i class="fas fa-wind me-1"></i>O3</th>
+                                            <th><i class="fas fa-tachometer-alt me-1"></i>AQI</th>
+                                            <th><i class="fas fa-chart-line me-1"></i>Tendência</th>
                                         </tr>
                                     </thead>
                                     <tbody id="data-table">
                                         <tr>
-                                            <td colspan="5" class="text-center py-4">
+                                            <td colspan="7" class="text-center py-4">
                                                 <div class="loading-spinner me-2"></div>
                                                 Carregando dados em tempo real...
                                             </td>
@@ -419,6 +757,44 @@
                 </div>
             </div>
 
+            <!-- Gráfico de Histórico -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-chart-area me-2"></i>Tendências das Últimas 24 Horas
+                            <small class="text-light ms-2">(Dados simulados com padrões realistas)</small>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="historyChart" height="100"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FILTROS E ANÁLISE (MOVIDO PARA BAIXO) -->
+            <div class="filter-section">
+                <h4 class="mb-3"><i class="fas fa-filter me-2"></i>Análise Avançada por Cidade</h4>
+                <div class="filter-controls">
+                    <div class="flex-grow-1">
+                        <input type="text" class="form-control" id="search-input" placeholder="🔍 Buscar estação...">
+                    </div>
+                    <div class="flex-grow-1">
+                        <select class="form-select" id="city-filter">
+                            <option value="all">🌍 Todas as Cidades</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="applyFilter()">
+                        <i class="fas fa-search me-2"></i>Filtrar
+                    </button>
+                </div>
+
+                <!-- Estatísticas por Cidade -->
+                <div id="city-statistics" class="city-stats-grid" style="display: none;">
+                    <!-- Será preenchido dinamicamente -->
+                </div>
+            </div>
+
             <!-- About Section -->
             <div class="row">
                 <div class="col-12">
@@ -431,7 +807,7 @@
                                 <div class="col-md-6">
                                     <h5 class="mb-3">Sistema de Monitoramento da Qualidade do Ar em Tempo Real</h5>
                                     <p>Este sistema foi desenvolvido como trabalho prático para a disciplina de Big Data do curso da UFRJ/CEDERJ, sob orientação do Prof. Alexandre de Assis Bento Lima.</p>
-                                    <p>Utiliza tecnologias de ponta para processamento de dados em tempo real, demonstrando a característica de <strong>Velocidade</strong> do Big Data através do Apache Spark Structured Streaming.</p>
+                                    <p>Utiliza tecnologias de ponta para processamento de dados em tempo real, demonstrando a característica de <strong>Velocidade</strong> do Big Data através do Apache Spark.</p>
                                 </div>
                                 <div class="col-md-6">
                                     <h6 class="mb-3"><i class="fas fa-cogs me-2"></i>Tecnologias Utilizadas</h6>
@@ -440,6 +816,7 @@
                                         <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Python/Flask para o backend</li>
                                         <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>HTML/CSS/JavaScript para o frontend</li>
                                         <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Bootstrap para design responsivo</li>
+                                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Chart.js para visualizações</li>
                                     </ul>
                                 </div>
                             </div>
@@ -448,6 +825,19 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Controles Flutuantes -->
+    <div class="floating-controls">
+        <button class="floating-btn theme" onclick="toggleTheme()" title="Alternar Tema">
+            <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+        <button class="floating-btn compact" onclick="toggleCompactMode()" title="Modo Compacto">
+            <i class="fas fa-compress-alt"></i>
+        </button>
+        <button class="floating-btn download" onclick="showDownloadOptions()" title="Baixar Relatório">
+            <i class="fas fa-download"></i>
+        </button>
     </div>
 
     <!-- Footer -->
@@ -459,8 +849,8 @@
                     Monitor Global de Qualidade do Ar
                 </div>
                 <div class="footer-links">
-                    <a href="#"><i class="fas fa-chart-bar me-1"></i>Relatórios</a>
-                    <a href="#"><i class="fas fa-download me-1"></i>Dados</a>
+                    <a href="#" onclick="showDownloadOptions()"><i class="fas fa-chart-bar me-1"></i>Relatórios</a>
+                    <a href="#" onclick="showDownloadOptions()"><i class="fas fa-download me-1"></i>Dados</a>
                     <a href="#"><i class="fas fa-question-circle me-1"></i>Ajuda</a>
                 </div>
             </div>
@@ -469,90 +859,294 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        let currentFilter = 'all';
+        let currentSearch = '';
+        let favorites = JSON.parse(localStorage.getItem('favorites' ) || '[]');
+        let historyChart = null;
+        let isCompactMode = localStorage.getItem('compactMode') === 'true';
+
+        // Sistema de notificações
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notification-text');
+            
+            notification.className = `notification ${type}`;
+            notificationText.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Toggle de tema
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const currentTheme = body.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+                showNotification('🌙 Tema escuro ativado', 'success');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+                showNotification('☀️ Tema claro ativado', 'success');
+            }
+        }
+
+        // Toggle modo compacto
+        function toggleCompactMode() {
+            isCompactMode = !isCompactMode;
+            const body = document.body;
+            
+            if (isCompactMode) {
+                body.classList.add('compact-mode');
+                localStorage.setItem('compactMode', 'true');
+                showNotification('📱 Modo compacto ativado', 'success');
+            } else {
+                body.classList.remove('compact-mode');
+                localStorage.setItem('compactMode', 'false');
+                showNotification('🖥️ Modo normal ativado', 'success');
+            }
+        }
+
+        // Carregar configurações salvas
+        function loadSavedSettings() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            body.setAttribute('data-theme', savedTheme);
+            themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            
+            if (isCompactMode) {
+                body.classList.add('compact-mode');
+            }
+        }
+
+        // Sistema de favoritos
+        function toggleFavorite(stationId) {
+            const index = favorites.indexOf(stationId);
+            if (index > -1) {
+                favorites.splice(index, 1);
+                showNotification('⭐ Estação removida dos favoritos', 'warning');
+            } else {
+                favorites.push(stationId);
+                showNotification('⭐ Estação adicionada aos favoritos', 'success');
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            fetchLatestData(); // Recarregar para atualizar ícones
+        }
+
+        // Opções de download
+        function showDownloadOptions() {
+            const options = ['CSV', 'JSON'];
+            const choice = prompt(`📊 Escolha o formato do relatório:\n1 - CSV\n2 - JSON\n\nDigite 1 ou 2:`);
+            
+            if (choice === '1') {
+                downloadReport('csv');
+            } else if (choice === '2') {
+                downloadReport('json');
+            }
+        }
+
+        // Função para carregar cidades no filtro
+        function loadCities() {
+            fetch('/api/cities')
+                .then(response => response.json())
+                .then(cities => {
+                    const cityFilter = document.getElementById('city-filter');
+                    
+                    // Limpar opções existentes (exceto "Todas as Cidades")
+                    while (cityFilter.children.length > 1) {
+                        cityFilter.removeChild(cityFilter.lastChild);
+                    }
+                    
+                    // Adicionar cidades
+                    cities.forEach(city => {
+                        const option = document.createElement('option');
+                        option.value = city;
+                        option.textContent = `🏙️ ${city}`;
+                        cityFilter.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Erro ao carregar cidades:', error));
+        }
+
+        // Função para aplicar filtro
+        function applyFilter() {
+            const cityFilter = document.getElementById('city-filter');
+            const searchInput = document.getElementById('search-input');
+            currentFilter = cityFilter.value;
+            currentSearch = searchInput.value;
+            
+            // Atualizar indicador de filtro
+            const filterIndicator = document.getElementById('filter-indicator');
+            let filterText = '';
+            
+            if (currentFilter !== 'all') filterText += `Cidade: ${currentFilter}`;
+            if (currentSearch) filterText += (filterText ? ' | ' : '') + `Busca: ${currentSearch}`;
+            
+            if (filterText) {
+                filterIndicator.textContent = filterText;
+                filterIndicator.style.display = 'inline';
+            } else {
+                filterIndicator.style.display = 'none';
+            }
+            
+            // Carregar dados filtrados
+            fetchFilteredData();
+            loadCityStatistics();
+            showNotification('🔍 Filtros aplicados com sucesso', 'success');
+        }
+
+        // Função para obter dados filtrados
+        function fetchFilteredData() {
+            let url = '/api/latest';
+            const params = new URLSearchParams();
+            
+            if (currentFilter !== 'all') params.append('city', currentFilter);
+            if (currentSearch) params.append('search', currentSearch);
+            
+            if (params.toString()) {
+                url = `/api/data/filter?${params.toString()}`;
+            }
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Dados filtrados recebidos:', data);
+                    updateDataTable(data);
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar dados filtrados:', error);
+                    showNotification('❌ Erro ao aplicar filtros', 'error');
+                });
+        }
+
         // Função para obter os dados mais recentes
-        function fetchLatestData( ) {
+        function fetchLatestData() {
+            if (currentFilter !== 'all' || currentSearch) {
+                fetchFilteredData();
+                return;
+            }
+
             fetch('/api/latest')
                 .then(response => response.json())
                 .then(data => {
                     console.log('Dados recebidos:', data);
-                    
-                    if (data.error) {
-                        console.error('Erro na API:', data.error);
-                        document.getElementById('data-table').innerHTML = 
-                            `<tr><td colspan="5" class="text-center text-danger py-4">
-                                <i class="fas fa-exclamation-triangle me-2"></i>
-                                Erro ao carregar dados: ${data.error}
-                            </td></tr>`;
-                        return;
-                    }
-                    
-                    // Atualizar timestamp
-                    document.getElementById('last-update').textContent = new Date().toLocaleTimeString('pt-BR');
-                    
-                    // Atualizar métricas
-                    document.getElementById('total-stations').textContent = data.length;
-                    document.getElementById('total-readings').textContent = data.length * 3; // Simulado
-                    
-                    // Limpar tabela
-                    const tableBody = document.getElementById('data-table');
-                    tableBody.innerHTML = '';
-                    
-                    if (data.length === 0) {
-                        tableBody.innerHTML = 
-                            `<tr><td colspan="5" class="text-center py-4">
-                                <i class="fas fa-info-circle me-2"></i>
-                                Nenhum dado disponível no momento
-                            </td></tr>`;
-                        return;
-                    }
-                    
-                    // Preencher tabela com dados
-                    data.forEach(station => {
-                        const row = document.createElement('tr');
-                        
-                        // Determinar status baseado no PM2.5
-                        let statusClass = 'status-good';
-                        let statusText = 'Bom';
-                        let statusIcon = 'fas fa-smile';
-                        
-                        const pm25 = parseFloat(station.avg_PM2_5 || 0);
-                        
-                        if (pm25 > 50) {
-                            statusClass = 'status-unhealthy';
-                            statusText = 'Insalubre';
-                            statusIcon = 'fas fa-frown';
-                        } else if (pm25 > 35) {
-                            statusClass = 'status-moderate';
-                            statusText = 'Moderado';
-                            statusIcon = 'fas fa-meh';
-                        }
-                        
-                        row.innerHTML = `
-                            <td>
-                                <div class="fw-bold">${station.station_name || 'N/A'}</div>
-                                <small class="text-muted">${station.station_id || 'N/A'}</small>
-                            </td>
-                            <td><strong>${pm25.toFixed(1)}</strong></td>
-                            <td><strong>${parseFloat(station.avg_CO2 || 0).toFixed(1)}</strong></td>
-                            <td><strong>${parseFloat(station.avg_O3 || 0).toFixed(1)}</strong></td>
-                            <td>
-                                <span class="status-badge ${statusClass}">
-                                    <i class="${statusIcon} me-1"></i>${statusText}
-                                </span>
-                            </td>
-                        `;
-                        
-                        tableBody.appendChild(row);
-                    });
+                    updateDataTable(data);
                 })
                 .catch(error => {
                     console.error('Erro ao buscar dados:', error);
                     document.getElementById('data-table').innerHTML = 
-                        `<tr><td colspan="5" class="text-center text-danger py-4">
+                        `<tr><td colspan="7" class="text-center text-danger py-4">
                             <i class="fas fa-wifi me-2"></i>
                             Erro de conexão com o servidor
                         </td></tr>`;
+                    showNotification('❌ Erro de conexão com o servidor', 'error');
                 });
+        }
+
+        // Função para atualizar a tabela de dados
+        function updateDataTable(data) {
+            if (data.error) {
+                console.error('Erro na API:', data.error);
+                document.getElementById('data-table').innerHTML = 
+                    `<tr><td colspan="7" class="text-center text-danger py-4">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        Erro ao carregar dados: ${data.error}
+                    </td></tr>`;
+                return;
+            }
+            
+            // Atualizar timestamp
+            document.getElementById('last-update').textContent = new Date().toLocaleTimeString('pt-BR');
+            
+            // Atualizar métricas
+            document.getElementById('total-stations').textContent = data.length;
+            document.getElementById('total-readings').textContent = data.length * 3; // Simulado
+            
+            // Calcular índice geral
+            if (data.length > 0) {
+                const avgPM25 = data.reduce((sum, station) => sum + parseFloat(station.avg_PM2_5 || 0), 0) / data.length;
+                let qualityIndex = 'Bom';
+                if (avgPM25 > 50) qualityIndex = 'Insalubre';
+                else if (avgPM25 > 35) qualityIndex = 'Moderado';
+                document.getElementById('air-quality-index').textContent = qualityIndex;
+            }
+            
+            // Limpar tabela
+            const tableBody = document.getElementById('data-table');
+            tableBody.innerHTML = '';
+            
+            if (data.length === 0) {
+                tableBody.innerHTML = 
+                    `<tr><td colspan="7" class="text-center py-4">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Nenhum dado disponível para o filtro selecionado
+                    </td></tr>`;
+                return;
+            }
+            
+            // Preencher tabela com dados
+            data.forEach(station => {
+                const row = document.createElement('tr');
+                
+                const pm25 = parseFloat(station.avg_PM2_5 || 0);
+                const co2 = parseFloat(station.avg_CO2 || 0);
+                const o3 = parseFloat(station.avg_O3 || 0);
+                
+                const stationId = station.station_id || 'N/A';
+                const isFavorite = favorites.includes(stationId);
+                
+                // Ícone de tendência
+                let trendIcon = 'fas fa-minus';
+                let trendClass = 'trend-stable';
+                let trendText = 'Estável';
+                
+                if (station.trend === 'up') {
+                    trendIcon = 'fas fa-arrow-up';
+                    trendClass = 'trend-up';
+                    trendText = `+${Math.abs(station.trend_percentage)}%`;
+                } else if (station.trend === 'down') {
+                    trendIcon = 'fas fa-arrow-down';
+                    trendClass = 'trend-down';
+                    trendText = `-${Math.abs(station.trend_percentage)}%`;
+                }
+                
+                row.innerHTML = `
+                    <td>
+                        <button class="favorite-btn ${isFavorite ? 'active' : ''}" onclick="toggleFavorite('${stationId}')">
+                            <i class="fas fa-star"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <div class="fw-bold">${station.station_name || 'N/A'}</div>
+                        <small class="text-muted">${stationId} - ${station.city || 'N/A'}</small>
+                    </td>
+                    <td><strong>${pm25.toFixed(1)}</strong> <small>μg/m³</small></td>
+                    <td><strong>${co2.toFixed(1)}</strong> <small>ppm</small></td>
+                    <td><strong>${o3.toFixed(1)}</strong> <small>μg/m³</small></td>
+                    <td>
+                        <span class="aqi-badge" style="background-color: ${station.aqi.color}">
+                            ${station.aqi.value}
+                        </span>
+                          
+<small>${station.aqi.category}</small>
+                    </td>
+                    <td>
+                        <i class="${trendIcon} ${trendClass}"></i>
+                        <small class="ms-1">${trendText}</small>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
         }
         
         // Função para obter alertas
@@ -612,10 +1206,303 @@
                         </div>`;
                 });
         }
+
+        // Função para carregar ranking de cidades
+        function loadCityRanking() {
+            fetch('/api/ranking')
+                .then(response => response.json())
+                .then(ranking => {
+                    console.log('Ranking recebido:', ranking);
+                    
+                    // Melhores cidades
+                    const bestContainer = document.getElementById('best-cities');
+                    bestContainer.innerHTML = '';
+                    
+                    ranking.best.forEach((city, index) => {
+                        const rankingItem = document.createElement('div');
+                        rankingItem.className = 'ranking-item';
+                        
+                        rankingItem.innerHTML = `
+                            <div class="ranking-position">${index + 1}</div>
+                            <div class="ranking-city">${city.city}</div>
+                            <div class="ranking-value">
+                                <span class="aqi-badge" style="background-color: ${city.aqi.color}">
+                                    ${city.aqi.value}
+                                </span>
+                            </div>
+                        `;
+                        
+                        bestContainer.appendChild(rankingItem);
+                    });
+                    
+                    // Piores cidades
+                    const worstContainer = document.getElementById('worst-cities');
+                    worstContainer.innerHTML = '';
+                    
+                    ranking.worst.forEach((city, index) => {
+                        const rankingItem = document.createElement('div');
+                        rankingItem.className = 'ranking-item';
+                        
+                        rankingItem.innerHTML = `
+                            <div class="ranking-position">${index + 1}</div>
+                            <div class="ranking-city">${city.city}</div>
+                            <div class="ranking-value">
+                                <span class="aqi-badge" style="background-color: ${city.aqi.color}">
+                                    ${city.aqi.value}
+                                </span>
+                            </div>
+                        `;
+                        
+                        worstContainer.appendChild(rankingItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar ranking:', error);
+                });
+        }
+
+        // Função para carregar metas ambientais
+        function loadEnvironmentalGoals() {
+            fetch('/api/environmental-goals')
+                .then(response => response.json())
+                .then(goals => {
+                    console.log('Metas ambientais:', goals);
+                    
+                    const goalsContainer = document.getElementById('environmental-goals');
+                    goalsContainer.innerHTML = '';
+                    
+                    Object.entries(goals).forEach(([pollutant, goal]) => {
+                        const goalDiv = document.createElement('div');
+                        goalDiv.className = 'mb-3';
+                        
+                        let statusClass = 'goal-in-progress';
+                        if (goal.status === 'achieved') statusClass = 'goal-achieved';
+                        else if (goal.status === 'critical') statusClass = 'goal-critical';
+                        
+                        goalDiv.innerHTML = `
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <strong>${pollutant.toUpperCase()}</strong>
+                                <span class="text-muted">${goal.current.toFixed(1)} / ${goal.target} ${goal.unit}</span>
+                            </div>
+                            <div class="goal-progress">
+                                <div class="goal-progress-bar ${statusClass}" style="width: ${goal.progress}%"></div>
+                            </div>
+                            <small class="text-muted">${goal.progress.toFixed(1)}% da meta OMS</small>
+                        `;
+                        
+                        goalsContainer.appendChild(goalDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar metas ambientais:', error);
+                });
+        }
+
+        // Função para carregar estatísticas por cidade
+        function loadCityStatistics() {
+            fetch('/api/statistics/city')
+                .then(response => response.json())
+                .then(stats => {
+                    console.log('Estatísticas por cidade:', stats);
+                    
+                    const cityStatsContainer = document.getElementById('city-statistics');
+                    
+                    if (Object.keys(stats).length === 0) {
+                        cityStatsContainer.style.display = 'none';
+                        return;
+                    }
+                    
+                    // Limpar container
+                    cityStatsContainer.innerHTML = '';
+                    
+                    // Criar cards para cada cidade
+                    Object.entries(stats).forEach(([city, data]) => {
+                        const cityCard = document.createElement('div');
+                        cityCard.className = 'city-stat-card';
+                        
+                        // Ícone de tendência da cidade
+                        let trendIcon = 'fas fa-minus';
+                        let trendClass = 'trend-stable';
+                        let trendText = 'Estável';
+                        
+                        if (data.trend === 'improving') {
+                            trendIcon = 'fas fa-arrow-down';
+                            trendClass = 'trend-down';
+                            trendText = 'Melhorando';
+                        } else if (data.trend === 'worsening') {
+                            trendIcon = 'fas fa-arrow-up';
+                            trendClass = 'trend-up';
+                            trendText = 'Piorando';
+                        }
+                        
+                        cityCard.innerHTML = `
+                            <div class="city-name">
+                                <i class="fas fa-city me-2"></i>${city}
+                                <i class="${trendIcon} ${trendClass} ms-2" title="${trendText}"></i>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Estações:</span>
+                                <span class="stat-value">${data.stations}</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">AQI:</span>
+                                <span class="aqi-badge" style="background-color: ${data.aqi.color}; font-size: 0.7rem;">
+                                    ${data.aqi.value}
+                                </span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">PM2.5 Médio:</span>
+                                <span class="stat-value">${data.avg_pm25.toFixed(1)} μg/m³</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">CO2 Médio:</span>
+                                <span class="stat-value">${data.avg_co2.toFixed(1)} ppm</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">O3 Médio:</span>
+                                <span class="stat-value">${data.avg_o3.toFixed(1)} μg/m³</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Conforme OMS:</span>
+                                <span class="stat-value ${data.who_compliance === 'Sim' ? 'text-success' : 'text-danger'}">
+                                    ${data.who_compliance}
+                                </span>
+                            </div>
+                        `;
+                        
+                        cityStatsContainer.appendChild(cityCard);
+                    });
+                    
+                    cityStatsContainer.style.display = 'grid';
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar estatísticas por cidade:', error);
+                });
+        }
+
+        // Função para carregar histórico e criar gráfico
+        function loadHistory() {
+            fetch('/api/history')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Histórico recebido:', data);
+                    createHistoryChart(data);
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar histórico:', error);
+                });
+        }
+
+        // Criar gráfico de histórico
+        function createHistoryChart(data) {
+            const ctx = document.getElementById('historyChart').getContext('2d');
+            
+            if (historyChart) {
+                historyChart.destroy();
+            }
+            
+            historyChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.map(item => item.timestamp),
+                    datasets: [
+                        {
+                            label: 'PM2.5 (μg/m³)',
+                            data: data.map(item => item.avg_pm25),
+                            borderColor: '#dc3545',
+                            backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'CO2 (ppm)',
+                            data: data.map(item => item.avg_co2),
+                            borderColor: '#009edb',
+                            backgroundColor: 'rgba(0, 158, 219, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'O3 (μg/m³)',
+                            data: data.map(item => item.avg_o3),
+                            borderColor: '#28a745',
+                            backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Horário'
+                            }
+                        },
+                        y: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Concentração'
+                            },
+                            beginAtZero: true
+                        }
+                    },
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                    }
+                }
+            });
+        }
+
+        // Função para baixar relatório
+        function downloadReport(format = 'csv') {
+            fetch(`/api/report/download?format=${format}`)
+                .then(response => {
+                    if (response.ok) {
+                        return response.blob();
+                    } else {
+                        throw new Error('Erro ao gerar relatório');
+                    }
+                })
+                .then(blob => {
+                    // Criar link para download
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = `relatorio_qualidade_ar_${new Date().toISOString().slice(0, 10)}.${format}`;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                    
+                    showNotification(`📊 Relatório ${format.toUpperCase()} baixado com sucesso`, 'success');
+                })
+                .catch(error => {
+                    console.error('Erro ao baixar relatório:', error);
+                    showNotification('❌ Erro ao gerar relatório', 'error');
+                });
+        }
         
         // Função de teste da API
         function testAPI() {
-            fetch('http://127.0.0.1:5000/api/test')
+            fetch('/api/test')
                 .then(response => response.json())
                 .then(data => {
                     console.log('Teste da API:', data);
@@ -624,18 +1511,40 @@
                     console.error('Erro no teste da API:', error);
                 });
         }
+
+        // Busca em tempo real
+        document.getElementById('search-input').addEventListener('input', function() {
+            clearTimeout(this.searchTimeout);
+            this.searchTimeout = setTimeout(() => {
+                applyFilter();
+            }, 500);
+        });
         
-        // Atualizar dados a cada 15 segundos
+        // Atualização automática inteligente (a cada 30 segundos)
         setInterval(() => {
             fetchLatestData();
             fetchAlerts();
-        }, 15000);
+            
+            // Atualizar ranking e metas a cada 2 minutos
+            if (Math.random() < 0.5) {
+                loadCityRanking();
+                loadEnvironmentalGoals();
+            }
+        }, 30000);
         
         // Carregar dados iniciais
         document.addEventListener('DOMContentLoaded', function() {
+            loadSavedSettings();
             testAPI();
+            loadCities();
             fetchLatestData();
             fetchAlerts();
+            loadCityStatistics();
+            loadHistory();
+            loadCityRanking();
+            loadEnvironmentalGoals();
+            
+            showNotification('🚀 Sistema carregado com sucesso!', 'success');
         });
     </script>
 </body>
