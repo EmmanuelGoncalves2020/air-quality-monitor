@@ -1,0 +1,6 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+MG003,Uberlândia,Uberlândia,-18.9188,-48.2768,510.16,45.98,77.55,2025-10-01T22:09:10.594-03:00
+MG001,Savassi,Belo Horizonte,-19.935,-43.9336,479.99,54.39,63.54,2025-10-01T22:09:10.594-03:00
+MG005,Montes Claros,Montes Claros,-16.7282,-43.8578,516.14,47.16,70.04,2025-10-01T22:09:10.594-03:00
+MG006,Uberaba,Uberaba,-19.7477,-47.931,460.76,64.32,75.23,2025-10-01T22:09:10.594-03:00
+ES001,Vitória,Vitória,-20.3155,-40.3128,468.65,64.72,69.97,2025-10-01T22:09:10.594-03:00

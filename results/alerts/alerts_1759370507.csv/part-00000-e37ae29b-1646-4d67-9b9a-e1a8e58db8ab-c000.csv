@@ -1,0 +1,3 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+ES002,Vila Velha,Vila Velha,-20.3417,-40.2875,455.33,65.42,69.65,2025-10-01T23:01:48.046-03:00
+MG001,Savassi,Belo Horizonte,-19.935,-43.9336,509.78,56.11,62.2,2025-10-01T23:01:48.046-03:00

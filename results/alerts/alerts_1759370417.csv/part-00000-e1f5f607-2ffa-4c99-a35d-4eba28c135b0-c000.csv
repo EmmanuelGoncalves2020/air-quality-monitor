@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S008,Barra da Tijuca,Rio de Janeiro,-23.0007,-43.3653,538.02,54.49,53.12,2025-10-01T23:00:18.458-03:00
+S012,Pinheiros,São Paulo,-23.5675,-46.7016,516.22,59.08,58.9,2025-10-01T23:00:18.458-03:00
+S014,Bela Vista,São Paulo,-23.5644,-46.6472,478.97,59.71,61.06,2025-10-01T23:00:18.458-03:00
+S036,Água Verde,Curitiba,-25.448,-49.282,543.67,68.51,41.69,2025-10-01T23:00:18.458-03:00

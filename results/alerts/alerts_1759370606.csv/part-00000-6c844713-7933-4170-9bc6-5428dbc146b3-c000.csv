@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S013,Moema,São Paulo,-23.6008,-46.6739,544.44,45.79,76.87,2025-10-01T23:03:26.440-03:00
+S039,Centro Histórico,Porto Alegre,-30.0277,-51.2287,493.31,90.54,58.97,2025-10-01T23:03:26.440-03:00
+S051,Savassi,Belo Horizonte,-19.935,-43.935,473.37,80.0,60.26,2025-10-01T23:03:26.440-03:00

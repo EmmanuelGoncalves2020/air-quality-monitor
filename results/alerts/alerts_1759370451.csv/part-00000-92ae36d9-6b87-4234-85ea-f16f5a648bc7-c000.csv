@@ -1,0 +1,2 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+SP007,Sorocaba,Sorocaba,-23.5015,-47.4526,471.11,89.18,50.08,2025-10-01T23:00:51.844-03:00

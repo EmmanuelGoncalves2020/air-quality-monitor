@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+RJ004,Nova Iguaçu,Nova Iguaçu,-22.7598,-43.4516,448.97,54.86,57.49,2025-10-01T22:06:26.469-03:00
+RJ005,Niterói,Niterói,-22.8832,-43.1034,493.61,70.62,66.16,2025-10-01T22:06:26.469-03:00
+ES005,Guarapari,Guarapari,-20.6771,-40.5093,561.32,55.72,70.42,2025-10-01T22:06:26.469-03:00
+MG004,Juiz de Fora,Juiz de Fora,-21.7622,-43.3434,479.08,58.24,53.8,2025-10-01T22:06:26.469-03:00

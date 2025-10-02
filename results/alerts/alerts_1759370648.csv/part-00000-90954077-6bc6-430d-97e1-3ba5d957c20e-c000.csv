@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+SP007,Sorocaba,Sorocaba,-23.5015,-47.4526,519.79,63.67,75.25,2025-10-01T23:04:08.878-03:00
+RJ003,Tijuca,Rio de Janeiro,-22.9309,-43.2376,510.71,56.53,48.87,2025-10-01T23:04:08.878-03:00
+MG002,Pampulha,Belo Horizonte,-19.8522,-43.9766,516.74,78.8,70.22,2025-10-01T23:04:08.878-03:00

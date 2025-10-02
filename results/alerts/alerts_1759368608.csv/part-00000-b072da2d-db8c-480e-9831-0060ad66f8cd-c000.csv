@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S008,Barra da Tijuca,Rio de Janeiro,-23.0007,-43.3653,465.06,75.14,67.77,2025-10-01T22:30:09.323-03:00
+S032,Barra,Salvador,-12.981,-38.51,468.78,86.6,62.79,2025-10-01T22:30:09.323-03:00
+S016,Liberdade,São Paulo,-23.57,-46.632,543.54,44.97,82.87,2025-10-01T22:30:09.323-03:00

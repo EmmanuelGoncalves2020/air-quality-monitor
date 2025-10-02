@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+RJ004,Nova Iguaçu,Nova Iguaçu,-22.7598,-43.4516,520.74,57.55,56.64,2025-10-01T22:52:45.837-03:00
+RJ007,Campos dos Goytacazes,Campos dos Goytacazes,-21.7622,-41.3181,530.32,53.3,48.51,2025-10-01T22:52:45.837-03:00
+MG001,Savassi,Belo Horizonte,-19.935,-43.9336,475.85,78.4,57.99,2025-10-01T22:52:45.837-03:00
+MG006,Uberaba,Uberaba,-19.7477,-47.931,475.67,77.17,69.99,2025-10-01T22:52:45.837-03:00

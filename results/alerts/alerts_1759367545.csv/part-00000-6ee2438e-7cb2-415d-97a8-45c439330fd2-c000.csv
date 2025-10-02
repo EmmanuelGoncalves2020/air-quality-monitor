@@ -1,0 +1,3 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+RJ006,Petrópolis,Petrópolis,-22.505,-43.1786,469.12,51.77,65.9,2025-10-01T22:12:25.859-03:00
+MG003,Uberlândia,Uberlândia,-18.9188,-48.2768,506.02,54.55,58.02,2025-10-01T22:12:25.859-03:00

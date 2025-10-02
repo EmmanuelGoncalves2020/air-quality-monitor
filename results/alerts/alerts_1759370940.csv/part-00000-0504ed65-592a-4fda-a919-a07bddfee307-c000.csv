@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S012,Pinheiros,São Paulo,-23.5675,-46.7016,520.52,80.88,51.96,2025-10-01T23:09:01.380-03:00
+S031,Centro Histórico,Salvador,-12.9711,-38.51,464.42,59.49,81.32,2025-10-01T23:09:01.380-03:00
+S036,Água Verde,Curitiba,-25.448,-49.282,546.97,64.83,63.07,2025-10-01T23:09:01.380-03:00
+S019,Funcionários,Belo Horizonte,-19.9305,-43.9381,517.66,68.3,89.28,2025-10-01T23:09:01.380-03:00

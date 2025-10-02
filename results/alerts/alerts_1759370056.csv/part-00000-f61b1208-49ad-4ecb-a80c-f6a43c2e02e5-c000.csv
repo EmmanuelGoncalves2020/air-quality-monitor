@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S015,Itaim Bibi,São Paulo,-23.5845,-46.6812,464.17,85.33,47.41,2025-10-01T22:54:46.294-03:00
+S027,Espinheiro,Recife,-8.049,-34.906,515.37,48.82,72.2,2025-10-01T22:54:46.294-03:00
+S006,Leblon,Rio de Janeiro,-22.9831,-43.2227,561.65,62.51,60.03,2025-10-01T22:54:46.294-03:00
+S029,Aldeota,Fortaleza,-3.7273,-38.519,517.92,90.16,68.39,2025-10-01T22:54:46.294-03:00

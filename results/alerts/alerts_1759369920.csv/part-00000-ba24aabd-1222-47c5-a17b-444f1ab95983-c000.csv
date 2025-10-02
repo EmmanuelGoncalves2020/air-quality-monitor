@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+RJ002,Copacabana,Rio de Janeiro,-22.9687,-43.1869,547.84,68.28,66.1,2025-10-01T22:52:00.694-03:00
+SP006,São José dos Campos,São José dos Campos,-23.2237,-45.9009,522.88,47.91,57.18,2025-10-01T22:52:00.694-03:00
+MG005,Montes Claros,Montes Claros,-16.7282,-43.8578,490.22,83.81,83.5,2025-10-01T22:52:00.694-03:00

@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S024,Lago Norte,Brasília,-15.763,-47.807,523.72,52.22,66.72,2025-10-01T22:05:35.952-03:00
+S002,Copacabana,Rio de Janeiro,-22.9687,-43.1869,522.93,49.14,74.77,2025-10-01T22:05:35.952-03:00
+S007,Ipanema,Rio de Janeiro,-22.9839,-43.206,487.26,48.51,68.54,2025-10-01T22:05:35.952-03:00
+S025,Boa Viagem,Recife,-8.1125,-34.9036,505.94,56.89,67.42,2025-10-01T22:05:35.952-03:00

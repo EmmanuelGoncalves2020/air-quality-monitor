@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+SP005,Santos,Santos,-23.954,-46.3336,469.54,84.38,65.63,2025-10-01T23:02:54.420-03:00
+SP008,Ribeirão Preto,Ribeirão Preto,-21.1786,-47.8066,540.82,71.2,72.26,2025-10-01T23:02:54.420-03:00
+MG004,Juiz de Fora,Juiz de Fora,-21.7622,-43.3434,520.35,81.48,68.88,2025-10-01T23:02:54.420-03:00

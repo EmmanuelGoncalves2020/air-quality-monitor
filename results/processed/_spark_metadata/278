@@ -1,0 +1,3 @@
+v1
+{"path":"file:///C:/air-quality-monitor/results/processed/part-00000-f77045ce-e201-40f8-9ba8-aa50ac2b0616-c000.snappy.parquet","size":5814,"isDir":false,"modificationTime":1759370752876,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///C:/air-quality-monitor/results/processed/part-00001-1c2d90e8-43be-4052-a4c6-6653cd13e5d2-c000.snappy.parquet","size":6258,"isDir":false,"modificationTime":1759370752882,"blockReplication":1,"blockSize":33554432,"action":"add"}

@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S041,Cidade Baixa,Porto Alegre,-30.033,-51.224,468.97,64.74,56.23,2025-10-01T22:53:07.333-03:00
+S020,Belvedere,Belo Horizonte,-19.932,-43.957,524.35,49.98,43.92,2025-10-01T22:53:07.333-03:00
+S025,Boa Viagem,Recife,-8.1125,-34.9036,475.25,71.03,76.83,2025-10-01T22:53:07.333-03:00
+S040,Petrópolis,Porto Alegre,-30.0215,-51.2005,519.91,83.71,77.0,2025-10-01T22:53:07.333-03:00

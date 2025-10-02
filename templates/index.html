@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor Global de Qualidade do Ar | Sistema de Monitoramento Ambiental</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --un-blue: #009edb;
+            --un-dark-blue: #1f4788;
+            --un-light-blue: #69c5e0;
+            --un-gray: #f7f7f7;
+            --un-dark-gray: #4a4a4a;
+            --success-green: #28a745;
+            --warning-yellow: #ffc107;
+            --danger-red: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100% );
+            min-height: 100vh;
+            color: var(--un-dark-gray);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--un-dark-blue) 0%, var(--un-blue) 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #28a745;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .main-container {
+            padding: 2rem 0;
+        }
+
+        .card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--un-blue) 0%, var(--un-light-blue) 100%);
+            color: white;
+            border-radius: 16px 16px 0 0 !important;
+            padding: 1.5rem;
+            border: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .metric-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 16px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .metric-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--un-blue);
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--un-dark-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--un-dark-gray);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table thead th {
+            background: var(--un-gray);
+            color: var(--un-dark-blue);
+            font-weight: 600;
+            border: none;
+            padding: 1rem;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .table tbody td {
+            padding: 1rem;
+            border-color: #f0f0f0;
+            vertical-align: middle;
+        }
+
+        .table tbody tr:hover {
+            background-color: rgba(0, 158, 219, 0.05);
+        }
+
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-good {
+            background: rgba(40, 167, 69, 0.1);
+            color: var(--success-green);
+            border: 2px solid rgba(40, 167, 69, 0.2);
+        }
+
+        .status-moderate {
+            background: rgba(255, 193, 7, 0.1);
+            color: #e6a800;
+            border: 2px solid rgba(255, 193, 7, 0.2);
+        }
+
+        .status-unhealthy {
+            background: rgba(220, 53, 69, 0.1);
+            color: var(--danger-red);
+            border: 2px solid rgba(220, 53, 69, 0.2);
+        }
+
+        .alert-item {
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.05) 0%, rgba(220, 53, 69, 0.02) 100%);
+            border: 1px solid rgba(220, 53, 69, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .alert-item:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 20px rgba(220, 53, 69, 0.1);
+        }
+
+        .alert-icon {
+            color: var(--danger-red);
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        .alert-title {
+            font-weight: 600;
+            color: var(--danger-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .alert-details {
+            font-size: 0.9rem;
+            color: var(--un-dark-gray);
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0, 158, 219, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--un-blue);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .footer {
+            background: var(--un-dark-blue);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .last-update {
+            background: rgba(0, 158, 219, 0.1);
+            color: var(--un-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .metric-card {
+                padding: 1.5rem;
+            }
+            
+            .metric-value {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1><i class="fas fa-globe-americas me-3"></i>Monitor Global de Qualidade do Ar</h1>
+                    <p class="subtitle">Sistema de Monitoramento Ambiental em Tempo Real | Tecnologia Apache Spark</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <div class="status-indicator">
+                        <div class="status-dot"></div>
+                        <span>Sistema Operacional</span>
+                    </div>
+                    <div class="last-update mt-2">
+                        <i class="fas fa-clock me-1"></i>
+                        Última atualização: <span id="last-update">Carregando...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="container">
+            <!-- Metrics Row -->
+            <div class="row mb-4">
+                <div class="col-md-3 mb-3">
+                    <div class="metric-card">
+                        <div class="metric-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="metric-value" id="total-stations">0</div>
+                        <div class="metric-label">Estações Ativas</div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="metric-card">
+                        <div class="metric-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="metric-value" id="total-readings">0</div>
+                        <div class="metric-label">Leituras Hoje</div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="metric-card">
+                        <div class="metric-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="metric-value" id="total-alerts">0</div>
+                        <div class="metric-label">Alertas Ativos</div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="metric-card">
+                        <div class="metric-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="metric-value" id="air-quality-index">Bom</div>
+                        <div class="metric-label">Índice Geral</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="row mb-4">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-table me-2"></i>Dados de Qualidade do Ar por Estação
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-container">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th><i class="fas fa-map-pin me-1"></i>Estação</th>
+                                            <th><i class="fas fa-smog me-1"></i>PM2.5 (μg/m³)</th>
+                                            <th><i class="fas fa-cloud me-1"></i>CO2 (ppm)</th>
+                                            <th><i class="fas fa-wind me-1"></i>O3 (μg/m³)</th>
+                                            <th><i class="fas fa-heartbeat me-1"></i>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="data-table">
+                                        <tr>
+                                            <td colspan="5" class="text-center py-4">
+                                                <div class="loading-spinner me-2"></div>
+                                                Carregando dados em tempo real...
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alerts Panel -->
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-bell me-2"></i>Alertas de Qualidade do Ar
+                        </div>
+                        <div class="card-body">
+                            <div id="alerts-container">
+                                <div class="text-center py-3">
+                                    <div class="loading-spinner me-2"></div>
+                                    Carregando alertas...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-info-circle me-2"></i>Sobre o Sistema de Monitoramento
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="mb-3">Sistema de Monitoramento da Qualidade do Ar em Tempo Real</h5>
+                                    <p>Este sistema foi desenvolvido como trabalho prático para a disciplina de Big Data do curso da UFRJ/CEDERJ, sob orientação do Prof. Alexandre de Assis Bento Lima.</p>
+                                    <p>Utiliza tecnologias de ponta para processamento de dados em tempo real, demonstrando a característica de <strong>Velocidade</strong> do Big Data através do Apache Spark Structured Streaming.</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="mb-3"><i class="fas fa-cogs me-2"></i>Tecnologias Utilizadas</h6>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Apache Spark (PySpark) para processamento em tempo real</li>
+                                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Python/Flask para o backend</li>
+                                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>HTML/CSS/JavaScript para o frontend</li>
+                                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Bootstrap para design responsivo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-globe-americas me-2"></i>
+                    Monitor Global de Qualidade do Ar
+                </div>
+                <div class="footer-links">
+                    <a href="#"><i class="fas fa-chart-bar me-1"></i>Relatórios</a>
+                    <a href="#"><i class="fas fa-download me-1"></i>Dados</a>
+                    <a href="#"><i class="fas fa-question-circle me-1"></i>Ajuda</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Função para obter os dados mais recentes
+        function fetchLatestData( ) {
+            fetch('/api/latest')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Dados recebidos:', data);
+                    
+                    if (data.error) {
+                        console.error('Erro na API:', data.error);
+                        document.getElementById('data-table').innerHTML = 
+                            `<tr><td colspan="5" class="text-center text-danger py-4">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                Erro ao carregar dados: ${data.error}
+                            </td></tr>`;
+                        return;
+                    }
+                    
+                    // Atualizar timestamp
+                    document.getElementById('last-update').textContent = new Date().toLocaleTimeString('pt-BR');
+                    
+                    // Atualizar métricas
+                    document.getElementById('total-stations').textContent = data.length;
+                    document.getElementById('total-readings').textContent = data.length * 3; // Simulado
+                    
+                    // Limpar tabela
+                    const tableBody = document.getElementById('data-table');
+                    tableBody.innerHTML = '';
+                    
+                    if (data.length === 0) {
+                        tableBody.innerHTML = 
+                            `<tr><td colspan="5" class="text-center py-4">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Nenhum dado disponível no momento
+                            </td></tr>`;
+                        return;
+                    }
+                    
+                    // Preencher tabela com dados
+                    data.forEach(station => {
+                        const row = document.createElement('tr');
+                        
+                        // Determinar status baseado no PM2.5
+                        let statusClass = 'status-good';
+                        let statusText = 'Bom';
+                        let statusIcon = 'fas fa-smile';
+                        
+                        const pm25 = parseFloat(station.avg_PM2_5 || 0);
+                        
+                        if (pm25 > 50) {
+                            statusClass = 'status-unhealthy';
+                            statusText = 'Insalubre';
+                            statusIcon = 'fas fa-frown';
+                        } else if (pm25 > 35) {
+                            statusClass = 'status-moderate';
+                            statusText = 'Moderado';
+                            statusIcon = 'fas fa-meh';
+                        }
+                        
+                        row.innerHTML = `
+                            <td>
+                                <div class="fw-bold">${station.station_name || 'N/A'}</div>
+                                <small class="text-muted">${station.station_id || 'N/A'}</small>
+                            </td>
+                            <td><strong>${pm25.toFixed(1)}</strong></td>
+                            <td><strong>${parseFloat(station.avg_CO2 || 0).toFixed(1)}</strong></td>
+                            <td><strong>${parseFloat(station.avg_O3 || 0).toFixed(1)}</strong></td>
+                            <td>
+                                <span class="status-badge ${statusClass}">
+                                    <i class="${statusIcon} me-1"></i>${statusText}
+                                </span>
+                            </td>
+                        `;
+                        
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar dados:', error);
+                    document.getElementById('data-table').innerHTML = 
+                        `<tr><td colspan="5" class="text-center text-danger py-4">
+                            <i class="fas fa-wifi me-2"></i>
+                            Erro de conexão com o servidor
+                        </td></tr>`;
+                });
+        }
+        
+        // Função para obter alertas
+        function fetchAlerts() {
+            fetch('/api/alerts')
+                .then(response => response.json())
+                .then(alerts => {
+                    console.log('Alertas recebidos:', alerts);
+                    
+                    const alertsContainer = document.getElementById('alerts-container');
+                    
+                    // Atualizar contador de alertas
+                    document.getElementById('total-alerts').textContent = alerts.length;
+                    
+                    if (alerts.length === 0) {
+                        alertsContainer.innerHTML = 
+                            `<div class="text-center py-3 text-success">
+                                <i class="fas fa-check-circle me-2"></i>
+                                Nenhum alerta ativo
+                            </div>`;
+                        return;
+                    }
+                    
+                    // Limpar container
+                    alertsContainer.innerHTML = '';
+                    
+                    // Preencher container com alertas
+                    alerts.slice(0, 5).forEach(alert => { // Mostrar apenas os 5 primeiros
+                        const alertDiv = document.createElement('div');
+                        alertDiv.className = 'alert-item';
+                        
+                        alertDiv.innerHTML = `
+                            <div class="alert-title">
+                                <i class="fas fa-exclamation-triangle alert-icon"></i>
+                                ${alert.station_name || 'Estação Desconhecida'}
+                            </div>
+                            <div class="alert-details">
+                                Níveis elevados detectados:  
+
+                                <small>
+                                    PM2.5: ${parseFloat(alert.avg_PM2_5 || 0).toFixed(1)} μg/m³ | 
+                                    CO2: ${parseFloat(alert.avg_CO2 || 0).toFixed(1)} ppm | 
+                                    O3: ${parseFloat(alert.avg_O3 || 0).toFixed(1)} μg/m³
+                                </small>
+                            </div>
+                        `;
+                        
+                        alertsContainer.appendChild(alertDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar alertas:', error);
+                    document.getElementById('alerts-container').innerHTML = 
+                        `<div class="text-center py-3 text-danger">
+                            <i class="fas fa-wifi me-2"></i>
+                            Erro ao carregar alertas
+                        </div>`;
+                });
+        }
+        
+        // Função de teste da API
+        function testAPI() {
+            fetch('http://127.0.0.1:5000/api/test')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Teste da API:', data);
+                })
+                .catch(error => {
+                    console.error('Erro no teste da API:', error);
+                });
+        }
+        
+        // Atualizar dados a cada 15 segundos
+        setInterval(() => {
+            fetchLatestData();
+            fetchAlerts();
+        }, 15000);
+        
+        // Carregar dados iniciais
+        document.addEventListener('DOMContentLoaded', function() {
+            testAPI();
+            fetchLatestData();
+            fetchAlerts();
+        });
+    </script>
+</body>
+</html>

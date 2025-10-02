@@ -1,0 +1,6 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S018,Pampulha,Belo Horizonte,-19.8513,-43.9586,518.95,63.74,65.66,2025-10-01T23:11:41.283-03:00
+S041,Cidade Baixa,Porto Alegre,-30.033,-51.224,499.27,82.27,75.42,2025-10-01T23:11:41.283-03:00
+S043,Boa Vista,Manaus,-3.0653,-60.025,495.11,70.81,46.83,2025-10-01T23:11:41.283-03:00
+S020,Belvedere,Belo Horizonte,-19.932,-43.957,510.66,86.68,58.4,2025-10-01T23:11:41.283-03:00
+S029,Aldeota,Fortaleza,-3.7273,-38.519,465.87,79.72,62.25,2025-10-01T23:11:41.283-03:00

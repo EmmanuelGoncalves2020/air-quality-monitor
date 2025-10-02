@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+ES002,Vila Velha,Vila Velha,-20.3417,-40.2875,441.64,65.42,66.99,2025-10-01T22:05:13.268-03:00
+MG002,Pampulha,Belo Horizonte,-19.8522,-43.9766,474.46,87.1,70.83,2025-10-01T22:05:13.268-03:00
+MG005,Montes Claros,Montes Claros,-16.7282,-43.8578,472.96,67.46,48.65,2025-10-01T22:05:13.268-03:00

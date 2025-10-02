@@ -1,0 +1,2 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+SP002,Pinheiros,São Paulo,-23.561,-46.7025,475.38,77.58,78.25,2025-10-01T22:56:32.417-03:00

@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+RJ002,Copacabana,Rio de Janeiro,-22.9687,-43.1869,514.21,60.06,52.9,2025-10-01T22:58:04.574-03:00
+ES003,Serra,Serra,-20.1211,-40.3074,547.59,53.48,76.86,2025-10-01T22:58:04.574-03:00
+MG006,Uberaba,Uberaba,-19.7477,-47.931,519.37,52.03,80.32,2025-10-01T22:58:04.574-03:00

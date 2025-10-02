@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S024,Lago Norte,Brasília,-15.763,-47.807,537.01,66.39,62.21,2025-10-01T22:58:26.999-03:00
+S042,Praia de Belas,Porto Alegre,-30.053,-51.212,447.28,63.72,73.34,2025-10-01T22:58:26.999-03:00
+S006,Leblon,Rio de Janeiro,-22.9831,-43.2227,460.62,84.46,77.18,2025-10-01T22:58:26.999-03:00
+S020,Belvedere,Belo Horizonte,-19.932,-43.957,531.97,76.47,61.46,2025-10-01T22:58:26.999-03:00

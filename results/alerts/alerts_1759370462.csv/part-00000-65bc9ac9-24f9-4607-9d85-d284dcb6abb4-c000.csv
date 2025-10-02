@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+SP005,Santos,Santos,-23.954,-46.3336,469.02,70.3,81.26,2025-10-01T23:01:03.170-03:00
+SP008,Ribeirão Preto,Ribeirão Preto,-21.1786,-47.8066,512.48,59.3,62.07,2025-10-01T23:01:03.170-03:00
+MG007,Ouro Preto,Ouro Preto,-20.3856,-43.5036,564.36,61.41,55.83,2025-10-01T23:01:03.170-03:00
+ES002,Vila Velha,Vila Velha,-20.3417,-40.2875,479.69,58.21,67.05,2025-10-01T23:01:03.170-03:00

@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S031,Centro Histórico,Salvador,-12.9711,-38.51,510.76,81.39,46.23,2025-10-01T22:07:58.163-03:00
+S043,Boa Vista,Manaus,-3.0653,-60.025,529.66,57.37,75.43,2025-10-01T22:07:58.163-03:00
+S020,Belvedere,Belo Horizonte,-19.932,-43.957,508.46,63.44,61.52,2025-10-01T22:07:58.163-03:00

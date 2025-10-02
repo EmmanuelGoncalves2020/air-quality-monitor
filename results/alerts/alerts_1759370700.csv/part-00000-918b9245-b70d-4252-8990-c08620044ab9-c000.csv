@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+MG003,Uberlândia,Uberlândia,-18.9188,-48.2768,483.7,47.91,55.1,2025-10-01T23:05:01.117-03:00
+SP004,Campinas,Campinas,-22.9099,-47.0626,524.03,61.7,62.9,2025-10-01T23:05:01.117-03:00
+MG005,Montes Claros,Montes Claros,-16.7282,-43.8578,522.31,41.29,85.89,2025-10-01T23:05:01.117-03:00

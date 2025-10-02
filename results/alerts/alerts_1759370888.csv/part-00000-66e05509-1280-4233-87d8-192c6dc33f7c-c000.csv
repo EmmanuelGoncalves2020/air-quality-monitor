@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S018,Pampulha,Belo Horizonte,-19.8513,-43.9586,502.69,91.45,70.76,2025-10-01T23:08:08.741-03:00
+S044,Centro,Manaus,-3.119,-60.0217,490.38,80.39,67.58,2025-10-01T23:08:08.741-03:00
+S038,Moinhos de Vento,Porto Alegre,-30.0346,-51.216,455.22,69.74,81.12,2025-10-01T23:08:08.741-03:00

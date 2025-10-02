@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S028,Meireles,Fortaleza,-3.7295,-38.5216,504.99,58.97,73.82,2025-10-01T23:08:29.674-03:00
+S042,Praia de Belas,Porto Alegre,-30.053,-51.212,525.4,63.06,64.42,2025-10-01T23:08:29.674-03:00
+S049,Setor Oeste,Goiânia,-16.686,-49.262,476.27,81.43,55.07,2025-10-01T23:08:29.674-03:00
+S019,Funcionários,Belo Horizonte,-19.9305,-43.9381,467.84,47.85,68.01,2025-10-01T23:08:29.674-03:00

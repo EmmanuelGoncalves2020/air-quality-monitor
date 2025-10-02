@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S024,Lago Norte,Brasília,-15.763,-47.807,480.23,54.47,63.17,2025-10-01T23:03:58.304-03:00
+S045,Aleixo,Manaus,-3.1272,-60.005,538.38,83.01,64.58,2025-10-01T23:03:58.304-03:00
+S038,Moinhos de Vento,Porto Alegre,-30.0346,-51.216,480.09,84.36,51.82,2025-10-01T23:03:58.304-03:00

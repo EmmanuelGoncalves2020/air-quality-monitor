@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S009,Lagoa,Rio de Janeiro,-22.9745,-43.2041,436.54,61.79,70.63,2025-10-01T22:08:22.367-03:00
+S013,Moema,São Paulo,-23.6008,-46.6739,440.71,76.26,55.98,2025-10-01T22:08:22.367-03:00
+S051,Savassi,Belo Horizonte,-19.935,-43.935,503.55,91.07,70.12,2025-10-01T22:08:22.367-03:00
+S003,Tijuca,Rio de Janeiro,-22.9309,-43.2376,462.03,73.13,64.74,2025-10-01T22:08:22.367-03:00

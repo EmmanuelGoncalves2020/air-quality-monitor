@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S023,Lago Sul,Brasília,-15.825,-47.853,471.12,55.97,51.35,2025-10-01T22:57:31.365-03:00
+S019,Funcionários,Belo Horizonte,-19.9305,-43.9381,430.9,61.17,72.98,2025-10-01T22:57:31.365-03:00
+S034,Batel,Curitiba,-25.4284,-49.2733,527.23,86.55,54.72,2025-10-01T22:57:31.365-03:00

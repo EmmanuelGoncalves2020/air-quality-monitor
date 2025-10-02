@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S036,Água Verde,Curitiba,-25.448,-49.282,510.25,71.63,62.19,2025-10-01T22:58:15.757-03:00
+S050,Setor Bueno,Goiânia,-16.678,-49.255,530.73,79.21,73.75,2025-10-01T22:58:15.757-03:00
+S006,Leblon,Rio de Janeiro,-22.9831,-43.2227,533.21,89.89,73.64,2025-10-01T22:58:15.757-03:00
+S007,Ipanema,Rio de Janeiro,-22.9839,-43.206,521.09,70.8,62.66,2025-10-01T22:58:15.757-03:00

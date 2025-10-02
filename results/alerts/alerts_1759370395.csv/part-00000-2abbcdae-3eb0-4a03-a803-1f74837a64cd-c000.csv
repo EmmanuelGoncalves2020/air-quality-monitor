@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+RJ004,Nova Iguaçu,Nova Iguaçu,-22.7598,-43.4516,529.76,79.46,65.68,2025-10-01T22:59:56.150-03:00
+RJ008,Volta Redonda,Volta Redonda,-22.5202,-44.0996,510.11,58.62,51.4,2025-10-01T22:59:56.150-03:00
+SP007,Sorocaba,Sorocaba,-23.5015,-47.4526,553.49,61.33,55.03,2025-10-01T22:59:56.150-03:00
+ES002,Vila Velha,Vila Velha,-20.3417,-40.2875,472.44,46.81,58.02,2025-10-01T22:59:56.150-03:00

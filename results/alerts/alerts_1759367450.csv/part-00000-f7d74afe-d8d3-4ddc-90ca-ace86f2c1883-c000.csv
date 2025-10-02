@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+RJ008,Volta Redonda,Volta Redonda,-22.5202,-44.0996,456.73,56.83,53.25,2025-10-01T22:10:50.654-03:00
+SP006,São José dos Campos,São José dos Campos,-23.2237,-45.9009,534.29,74.81,71.02,2025-10-01T22:10:50.654-03:00
+MG005,Montes Claros,Montes Claros,-16.7282,-43.8578,502.82,87.85,79.49,2025-10-01T22:10:50.654-03:00

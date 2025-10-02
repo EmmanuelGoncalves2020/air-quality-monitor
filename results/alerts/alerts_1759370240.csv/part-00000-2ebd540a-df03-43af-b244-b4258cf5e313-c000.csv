@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S041,Cidade Baixa,Porto Alegre,-30.033,-51.224,533.0,48.16,70.17,2025-10-01T22:57:20.340-03:00
+S042,Praia de Belas,Porto Alegre,-30.053,-51.212,460.17,88.77,68.2,2025-10-01T22:57:20.340-03:00
+S002,Copacabana,Rio de Janeiro,-22.9687,-43.1869,457.3,39.32,73.73,2025-10-01T22:57:20.340-03:00
+S011,Vila Madalena,São Paulo,-23.5567,-46.6892,482.08,77.52,67.71,2025-10-01T22:57:20.340-03:00

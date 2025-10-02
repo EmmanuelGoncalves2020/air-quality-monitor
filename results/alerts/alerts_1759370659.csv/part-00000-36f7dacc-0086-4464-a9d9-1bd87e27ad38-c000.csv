@@ -1,0 +1,3 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+SP005,Santos,Santos,-23.954,-46.3336,517.94,40.09,44.36,2025-10-01T23:04:19.313-03:00
+MG004,Juiz de Fora,Juiz de Fora,-21.7622,-43.3434,494.64,78.72,65.02,2025-10-01T23:04:19.313-03:00

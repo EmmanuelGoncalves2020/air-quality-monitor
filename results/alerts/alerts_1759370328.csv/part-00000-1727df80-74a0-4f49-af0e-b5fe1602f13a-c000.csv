@@ -1,0 +1,3 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+SP005,Santos,Santos,-23.954,-46.3336,536.8,74.66,58.37,2025-10-01T22:58:49.269-03:00
+MG006,Uberaba,Uberaba,-19.7477,-47.931,475.94,69.94,44.35,2025-10-01T22:58:49.269-03:00

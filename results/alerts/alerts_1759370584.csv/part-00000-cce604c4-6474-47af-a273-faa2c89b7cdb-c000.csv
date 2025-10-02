@@ -1,0 +1,3 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+ES003,Serra,Serra,-20.1211,-40.3074,493.93,65.3,84.01,2025-10-01T23:03:05.104-03:00
+SP004,Campinas,Campinas,-22.9099,-47.0626,457.09,79.47,52.85,2025-10-01T23:03:05.104-03:00

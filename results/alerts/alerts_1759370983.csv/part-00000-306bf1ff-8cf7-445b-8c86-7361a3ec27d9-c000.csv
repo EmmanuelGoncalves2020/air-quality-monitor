@@ -1,0 +1,6 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S008,Barra da Tijuca,Rio de Janeiro,-23.0007,-43.3653,514.58,63.72,62.87,2025-10-01T23:09:44.068-03:00
+S017,Savassi,Belo Horizonte,-19.9311,-43.9378,509.92,55.71,58.17,2025-10-01T23:09:44.068-03:00
+S023,Lago Sul,Brasília,-15.825,-47.853,541.8,57.75,66.4,2025-10-01T23:09:44.068-03:00
+S027,Espinheiro,Recife,-8.049,-34.906,466.83,36.53,68.66,2025-10-01T23:09:44.068-03:00
+S006,Leblon,Rio de Janeiro,-22.9831,-43.2227,493.77,75.1,70.48,2025-10-01T23:09:44.068-03:00

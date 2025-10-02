@@ -1,0 +1,2 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S047,Reduto,Belém,-1.44,-48.502,448.85,76.91,52.8,2025-10-01T23:03:47.638-03:00

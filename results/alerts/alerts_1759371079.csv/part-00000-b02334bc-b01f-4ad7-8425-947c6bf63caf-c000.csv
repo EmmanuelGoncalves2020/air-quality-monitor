@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S008,Barra da Tijuca,Rio de Janeiro,-23.0007,-43.3653,519.73,67.18,72.21,2025-10-01T23:11:19.989-03:00
+S010,Jardim Paulista,São Paulo,-23.5711,-46.652,523.43,56.06,76.94,2025-10-01T23:11:19.989-03:00
+S045,Aleixo,Manaus,-3.1272,-60.005,494.79,43.68,67.27,2025-10-01T23:11:19.989-03:00
+S016,Liberdade,São Paulo,-23.57,-46.632,479.18,67.45,52.42,2025-10-01T23:11:19.989-03:00

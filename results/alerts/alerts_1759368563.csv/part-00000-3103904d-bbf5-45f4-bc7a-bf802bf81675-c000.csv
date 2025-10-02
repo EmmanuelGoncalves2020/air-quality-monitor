@@ -1,0 +1,6 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S050,Setor Bueno,Goiânia,-16.678,-49.255,507.36,75.71,82.1,2025-10-01T22:29:24.200-03:00
+S051,Savassi,Belo Horizonte,-19.935,-43.935,483.38,72.0,47.06,2025-10-01T22:29:24.200-03:00
+S004,Nova Iguaçu,Rio de Janeiro,-22.7598,-43.4516,461.68,54.54,67.42,2025-10-01T22:29:24.200-03:00
+S038,Moinhos de Vento,Porto Alegre,-30.0346,-51.216,488.38,54.2,53.63,2025-10-01T22:29:24.200-03:00
+S046,Centro,Belém,-1.455,-48.503,507.68,73.89,54.91,2025-10-01T22:29:24.200-03:00

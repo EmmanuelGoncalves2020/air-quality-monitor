@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+SP008,Ribeirão Preto,Ribeirão Preto,-21.1786,-47.8066,523.15,60.31,62.01,2025-10-01T22:59:00.406-03:00
+MG007,Ouro Preto,Ouro Preto,-20.3856,-43.5036,508.47,72.37,64.38,2025-10-01T22:59:00.406-03:00
+ES003,Serra,Serra,-20.1211,-40.3074,463.65,60.39,43.34,2025-10-01T22:59:00.406-03:00

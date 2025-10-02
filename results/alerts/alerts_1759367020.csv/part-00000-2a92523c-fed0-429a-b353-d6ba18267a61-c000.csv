@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+RJ006,Petrópolis,Petrópolis,-22.505,-43.1786,494.02,46.36,59.1,2025-10-01T22:04:05.692-03:00
+ES003,Serra,Serra,-20.1211,-40.3074,520.43,58.58,75.35,2025-10-01T22:04:05.692-03:00
+SP006,São José dos Campos,São José dos Campos,-23.2237,-45.9009,491.76,74.41,67.45,2025-10-01T22:04:05.692-03:00
+ES001,Vitória,Vitória,-20.3155,-40.3128,441.96,67.58,56.01,2025-10-01T22:04:05.692-03:00

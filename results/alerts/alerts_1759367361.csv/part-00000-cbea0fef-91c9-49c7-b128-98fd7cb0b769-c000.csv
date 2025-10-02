@@ -1,0 +1,3 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S039,Centro Histórico,Porto Alegre,-30.0277,-51.2287,547.44,47.65,50.03,2025-10-01T22:09:21.771-03:00
+S003,Tijuca,Rio de Janeiro,-22.9309,-43.2376,560.81,76.26,68.85,2025-10-01T22:09:21.771-03:00

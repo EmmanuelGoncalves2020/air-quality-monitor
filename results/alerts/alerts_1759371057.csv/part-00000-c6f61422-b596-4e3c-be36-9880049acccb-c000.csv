@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S031,Centro Histórico,Salvador,-12.9711,-38.51,533.22,53.4,72.63,2025-10-01T23:10:58.360-03:00
+S035,Centro,Curitiba,-25.4287,-49.2731,484.12,73.06,49.71,2025-10-01T23:10:58.360-03:00
+S007,Ipanema,Rio de Janeiro,-22.9839,-43.206,485.42,73.1,70.33,2025-10-01T23:10:58.360-03:00
+S046,Centro,Belém,-1.455,-48.503,497.89,72.65,74.22,2025-10-01T23:10:58.360-03:00

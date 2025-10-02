@@ -1,0 +1,3 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+ES005,Guarapari,Guarapari,-20.6771,-40.5093,457.13,67.1,69.23,2025-10-01T23:01:36.741-03:00
+MG001,Savassi,Belo Horizonte,-19.935,-43.9336,471.49,43.97,84.39,2025-10-01T23:01:36.741-03:00

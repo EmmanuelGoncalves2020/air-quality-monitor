@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S008,Barra da Tijuca,Rio de Janeiro,-23.0007,-43.3653,483.35,80.26,57.48,2025-10-01T22:29:45.859-03:00
+S018,Pampulha,Belo Horizonte,-19.8513,-43.9586,491.22,45.44,76.59,2025-10-01T22:29:45.859-03:00
+S033,Ondina,Salvador,-12.9782,-38.503,495.74,57.21,84.64,2025-10-01T22:29:45.859-03:00
+S029,Aldeota,Fortaleza,-3.7273,-38.519,489.35,40.69,59.15,2025-10-01T22:29:45.859-03:00

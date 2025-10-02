@@ -1,0 +1,2 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+SP004,Campinas,Campinas,-22.9099,-47.0626,513.11,53.23,54.82,2025-10-01T22:56:58.412-03:00

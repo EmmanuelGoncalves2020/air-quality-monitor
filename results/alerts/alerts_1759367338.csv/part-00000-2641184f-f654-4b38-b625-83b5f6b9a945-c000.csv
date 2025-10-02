@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+MG003,Uberlândia,Uberlândia,-18.9188,-48.2768,449.69,64.74,82.68,2025-10-01T22:08:59.280-03:00
+RJ001,Centro,Rio de Janeiro,-22.9068,-43.1729,550.46,73.58,82.88,2025-10-01T22:08:59.280-03:00
+SP004,Campinas,Campinas,-22.9099,-47.0626,480.49,42.67,73.5,2025-10-01T22:08:59.280-03:00
+MG002,Pampulha,Belo Horizonte,-19.8522,-43.9766,457.83,60.89,67.65,2025-10-01T22:08:59.280-03:00

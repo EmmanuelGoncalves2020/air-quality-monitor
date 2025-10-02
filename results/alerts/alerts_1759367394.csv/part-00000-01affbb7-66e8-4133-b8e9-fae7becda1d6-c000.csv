@@ -1,0 +1,8 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+RJ008,Volta Redonda,Volta Redonda,-22.5202,-44.0996,529.26,53.09,65.3,2025-10-01T22:09:55.441-03:00
+ES004,Cariacica,Cariacica,-20.2637,-40.4165,463.35,81.74,83.5,2025-10-01T22:09:55.441-03:00
+ES005,Guarapari,Guarapari,-20.6771,-40.5093,540.2,47.0,59.39,2025-10-01T22:09:55.441-03:00
+SP001,Paulista,São Paulo,-23.5614,-46.6559,448.49,90.44,77.69,2025-10-01T22:09:55.441-03:00
+SP006,São José dos Campos,São José dos Campos,-23.2237,-45.9009,492.66,40.97,76.08,2025-10-01T22:09:55.441-03:00
+MG001,Savassi,Belo Horizonte,-19.935,-43.9336,462.16,39.95,57.81,2025-10-01T22:09:55.441-03:00
+MG004,Juiz de Fora,Juiz de Fora,-21.7622,-43.3434,545.92,54.59,59.07,2025-10-01T22:09:55.441-03:00

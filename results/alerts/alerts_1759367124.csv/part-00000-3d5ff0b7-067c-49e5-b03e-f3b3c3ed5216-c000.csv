@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S017,Savassi,Belo Horizonte,-19.9311,-43.9378,530.22,69.34,64.8,2025-10-01T22:05:24.929-03:00
+S027,Espinheiro,Recife,-8.049,-34.906,536.44,65.56,52.18,2025-10-01T22:05:24.929-03:00
+S004,Nova Iguaçu,Rio de Janeiro,-22.7598,-43.4516,462.41,63.28,59.34,2025-10-01T22:05:24.929-03:00

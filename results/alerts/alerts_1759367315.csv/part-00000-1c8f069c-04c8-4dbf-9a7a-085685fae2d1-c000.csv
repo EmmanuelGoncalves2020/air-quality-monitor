@@ -1,0 +1,2 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S049,Setor Oeste,Goiânia,-16.686,-49.262,530.65,79.0,85.87,2025-10-01T22:08:36.903-03:00

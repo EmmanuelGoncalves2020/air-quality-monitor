@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S041,Cidade Baixa,Porto Alegre,-30.033,-51.224,459.82,48.24,83.21,2025-10-01T22:07:13.320-03:00
+S043,Boa Vista,Manaus,-3.0653,-60.025,555.95,71.95,49.89,2025-10-01T22:07:13.320-03:00
+S044,Centro,Manaus,-3.119,-60.0217,517.57,79.19,57.78,2025-10-01T22:07:13.320-03:00

@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+ES005,Guarapari,Guarapari,-20.6771,-40.5093,497.2,77.45,70.33,2025-10-01T23:06:45.542-03:00
+SP006,São José dos Campos,São José dos Campos,-23.2237,-45.9009,508.51,47.41,66.95,2025-10-01T23:06:45.542-03:00
+ES001,Vitória,Vitória,-20.3155,-40.3128,496.05,70.35,86.33,2025-10-01T23:06:45.542-03:00

@@ -1,0 +1,6 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S027,Espinheiro,Recife,-8.049,-34.906,561.93,86.39,57.8,2025-10-01T22:55:36.537-03:00
+S049,Setor Oeste,Goiânia,-16.686,-49.262,528.43,62.41,75.95,2025-10-01T22:55:36.537-03:00
+S002,Copacabana,Rio de Janeiro,-22.9687,-43.1869,488.16,48.44,50.8,2025-10-01T22:55:36.537-03:00
+S006,Leblon,Rio de Janeiro,-22.9831,-43.2227,528.43,57.41,57.32,2025-10-01T22:55:36.537-03:00
+S016,Liberdade,São Paulo,-23.57,-46.632,517.39,66.22,85.85,2025-10-01T22:55:36.537-03:00

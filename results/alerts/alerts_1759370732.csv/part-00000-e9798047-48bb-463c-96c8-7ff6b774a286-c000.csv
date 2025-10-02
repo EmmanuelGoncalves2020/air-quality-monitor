@@ -1,0 +1,7 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S008,Barra da Tijuca,Rio de Janeiro,-23.0007,-43.3653,538.74,69.0,70.4,2025-10-01T23:05:32.468-03:00
+S014,Bela Vista,São Paulo,-23.5644,-46.6472,505.76,61.0,60.67,2025-10-01T23:05:32.468-03:00
+S031,Centro Histórico,Salvador,-12.9711,-38.51,459.62,81.64,84.05,2025-10-01T23:05:32.468-03:00
+S041,Cidade Baixa,Porto Alegre,-30.033,-51.224,475.75,75.74,61.99,2025-10-01T23:05:32.468-03:00
+S006,Leblon,Rio de Janeiro,-22.9831,-43.2227,510.26,69.63,78.0,2025-10-01T23:05:32.468-03:00
+S037,Cabral,Curitiba,-25.419,-49.269,555.21,88.83,65.72,2025-10-01T23:05:32.468-03:00

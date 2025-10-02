@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+RJ007,Campos dos Goytacazes,Campos dos Goytacazes,-21.7622,-41.3181,452.17,84.5,74.83,2025-10-01T23:04:40.260-03:00
+MG007,Ouro Preto,Ouro Preto,-20.3856,-43.5036,432.15,69.72,65.4,2025-10-01T23:04:40.260-03:00
+ES003,Serra,Serra,-20.1211,-40.3074,487.73,43.02,62.43,2025-10-01T23:04:40.260-03:00
+SP002,Pinheiros,São Paulo,-23.561,-46.7025,500.76,62.63,67.99,2025-10-01T23:04:40.260-03:00

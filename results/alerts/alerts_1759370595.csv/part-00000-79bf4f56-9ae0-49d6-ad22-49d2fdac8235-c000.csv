@@ -1,0 +1,6 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S009,Lagoa,Rio de Janeiro,-22.9745,-43.2041,461.45,71.42,74.77,2025-10-01T23:03:15.827-03:00
+S018,Pampulha,Belo Horizonte,-19.8513,-43.9586,506.62,56.07,62.78,2025-10-01T23:03:15.827-03:00
+S006,Leblon,Rio de Janeiro,-22.9831,-43.2227,522.32,61.19,69.31,2025-10-01T23:03:15.827-03:00
+S029,Aldeota,Fortaleza,-3.7273,-38.519,498.51,76.01,71.08,2025-10-01T23:03:15.827-03:00
+S038,Moinhos de Vento,Porto Alegre,-30.0346,-51.216,517.52,89.62,71.79,2025-10-01T23:03:15.827-03:00

@@ -1,0 +1,4 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+RJ004,Nova Iguaçu,Nova Iguaçu,-22.7598,-43.4516,465.55,66.4,69.34,2025-10-01T23:07:16.694-03:00
+RJ007,Campos dos Goytacazes,Campos dos Goytacazes,-21.7622,-41.3181,453.52,46.64,55.68,2025-10-01T23:07:16.694-03:00
+MG004,Juiz de Fora,Juiz de Fora,-21.7622,-43.3434,485.65,78.94,60.93,2025-10-01T23:07:16.694-03:00

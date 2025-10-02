@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+SP007,Sorocaba,Sorocaba,-23.5015,-47.4526,466.4,56.4,64.32,2025-10-01T22:04:29.761-03:00
+SP008,Ribeirão Preto,Ribeirão Preto,-21.1786,-47.8066,478.83,56.53,56.26,2025-10-01T22:04:29.761-03:00
+ES002,Vila Velha,Vila Velha,-20.3417,-40.2875,536.51,59.64,49.18,2025-10-01T22:04:29.761-03:00
+SP003,Ibirapuera,São Paulo,-23.5874,-46.6576,495.34,72.39,69.95,2025-10-01T22:04:29.761-03:00

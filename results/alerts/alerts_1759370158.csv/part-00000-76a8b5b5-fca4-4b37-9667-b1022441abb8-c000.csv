@@ -1,0 +1,5 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S013,Moema,São Paulo,-23.6008,-46.6739,476.96,69.64,67.18,2025-10-01T22:55:59.013-03:00
+S018,Pampulha,Belo Horizonte,-19.8513,-43.9586,494.03,66.84,60.22,2025-10-01T22:55:59.013-03:00
+S042,Praia de Belas,Porto Alegre,-30.053,-51.212,551.31,54.67,65.67,2025-10-01T22:55:59.013-03:00
+S025,Boa Viagem,Recife,-8.1125,-34.9036,480.84,56.97,68.29,2025-10-01T22:55:59.013-03:00

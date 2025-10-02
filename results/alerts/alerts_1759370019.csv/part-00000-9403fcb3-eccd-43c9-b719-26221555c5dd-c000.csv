@@ -1,0 +1,2 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+ES005,Guarapari,Guarapari,-20.6771,-40.5093,533.07,58.68,69.53,2025-10-01T22:53:40.390-03:00

@@ -1,0 +1,6 @@
+station_id,station_name,city,latitude,longitude,avg_CO2,avg_PM2_5,avg_O3,processing_time
+S027,Espinheiro,Recife,-8.049,-34.906,510.9,46.39,71.33,2025-10-01T22:56:21.235-03:00
+S001,Centro,Rio de Janeiro,-22.9068,-43.1729,492.94,64.6,85.5,2025-10-01T22:56:21.235-03:00
+S016,Liberdade,São Paulo,-23.57,-46.632,468.77,69.38,68.05,2025-10-01T22:56:21.235-03:00
+S029,Aldeota,Fortaleza,-3.7273,-38.519,522.18,46.75,84.39,2025-10-01T22:56:21.235-03:00
+S040,Petrópolis,Porto Alegre,-30.0215,-51.2005,457.07,66.7,79.27,2025-10-01T22:56:21.235-03:00
